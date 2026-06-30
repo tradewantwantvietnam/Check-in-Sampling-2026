@@ -421,13 +421,15 @@ async function upload(){
         const base64data = reader.result;
         try {
             const res = await fetch(SCRIPT_URL, {
-              method: "POST",
-              mode: "cors", 
-              body: JSON.stringify({
-                image: base64data,
-                filename: "checkin.jpg"
-              })
-            });
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    image: base64data,
+    filename: "checkin.jpg"
+  })
+});
 
             const data = await res.json();
 
