@@ -259,8 +259,8 @@
   </div>
 
   <div class="alert-box">
-    <strong>Bước 1:</strong> Mở Camera → Chọn kiểu cam (Trước/Sau) → Chụp.
-    <br><strong>Bước 2:</strong> Upload lên Drive. 
+    <strong>Bước 1:</strong> Bấm "Bắt đầu ca" → Chọn kiểu cam (Sau/Trước).
+    <br><strong>Bước 2:</strong> Chụp ảnh & Upload lên Drive. 
     <br><strong>Bước 3:</strong> Điền Form báo cáo.
   </div>
 
@@ -271,9 +271,11 @@
   </div>
 
   <div class="camera-select-group" id="camSelectGroup">
-    <label>Chọn kiểu Camera:</label>
-    <select id="cameraSelect" onchange="switchCamera()">
-      </select>
+    <label>Chọn loại Camera:</label>
+    <select id="cameraSelect" onchange="switchCameraMode()">
+      <option value="environment">📸 Camera Sau (Môi trường)</option>
+      <option value="user">🤳 Camera Trước (Selfie)</option>
+    </select>
   </div>
 
   <button class="btn-open" id="openBtn" onclick="initCamera()">📸 Bắt đầu ca</button>
@@ -297,9 +299,7 @@ const ENTRY_ID = "entry.1519431587";
 let stream;
 let imgData;
 let uploadedLink;
-let currentFacingMode = "environment"; 
-let videoDevices = [];
-let currentDeviceId = null;
+let selectedFacingMode = "environment"; // Mặc định mở camera sau
 
 function setStatus(t){ 
   document.getElementById("status").innerText = t; 
@@ -312,9 +312,165 @@ function updateStep(stepIndex) {
   });
 }
 
-// BƯỚC 1: Lấy quyền và danh sách camera trước
+// Mở trực tiếp luồng camera dựa trên FacingMode (Trước/Sau) cực kỳ ổn định trên mobile
 async function initCamera() {
   try {
-    setStatus("Đang khởi tạo danh sách camera...");
-    await navigator.mediaDevices.getUserMedia({ video: true }); // Lấy quyền
-    const devices = await navigator.mediaDevices.enumerateDevices();
+    setStatus("Đang bật camera, vui lòng đợi...");
+    
+    if (stream) {
+      stream.getTracks().forEach(t => t.stop());
+    }
+
+    selectedFacingMode = document.getElementById("cameraSelect").value;
+    
+    const constraints = { 
+      video: { 
+        facingMode: { exact: selectedFacingMode } 
+      } 
+    };
+
+    try {
+      stream = await navigator.mediaDevices.getUserMedia(constraints);
+    } catch (e) {
+      // Fallback nếu trình duyệt không hỗ trợ exact facingMode
+      console.warn("Exact facing mode failed, falling back to basic constraints", e);
+      stream = await navigator.mediaDevices.getUserMedia({ 
+        video: { facingMode: selectedFacingMode } 
+      });
+    }
+    
+    const video = document.getElementById("video");
+    video.srcObject = stream;
+    
+    document.getElementById("placeholder").style.display = "none";
+    video.style.display = "block";
+    document.getElementById("preview").style.display = "none";
+
+    document.getElementById("openBtn").style.display = "none";
+    document.getElementById("captureBtn").style.display = "flex";
+    document.getElementById("retakeBtn").style.display = "none";
+    document.getElementById("uploadBtn").style.display = "none";
+    
+    document.getElementById("camSelectGroup").style.display = "flex";
+    
+    setStatus("Camera đã sẵn sàng. Hãy bấm Chụp ảnh!");
+    updateStep(1);
+  } catch(err) {
+    console.error("Lỗi camera:", err);
+    setStatus("🔴 Lỗi mở camera. Vui lòng đảm bảo đã cấp quyền!");
+    alert("Không thể truy cập camera. Hãy chắc chắn rằng bạn đã cho phép trang web sử dụng Camera.");
+  }
+}
+
+// Khi người dùng đổi lựa chọn Camera Trước / Camera Sau trên menu xổ xuống
+async function switchCameraMode() {
+  await initCamera();
+}
+
+function capture(){
+  const video = document.getElementById("video");
+  const preview = document.getElementById("preview");
+  const canvas = document.createElement("canvas");
+
+  canvas.width = video.videoWidth || 1280;
+  canvas.height = video.videoHeight || 720;
+
+  canvas.getContext("2d").drawImage(video, 0, 0, canvas.width, canvas.height);
+
+  imgData = canvas.toDataURL("image/jpeg", 0.7); 
+
+  preview.src = imgData;
+  preview.style.display = "block";
+  video.style.display = "none";
+
+  if(stream) {
+    stream.getTracks().forEach(t => t.stop());
+  }
+
+  document.getElementById("captureBtn").style.display = "none";
+  document.getElementById("retakeBtn").style.display = "flex";
+  document.getElementById("uploadBtn").style.display = "flex";
+  document.getElementById("camSelectGroup").style.display = "none";
+
+  setStatus("📸 Chụp xong! Bấm nút Upload lên Drive nhé.");
+  updateStep(1);
+}
+
+function retakeCam() {
+  imgData = null;
+  document.getElementById("preview").style.display = "none";
+  document.getElementById("link").innerHTML = "";
+  document.getElementById("formBtn").style.display = "none";
+  document.getElementById("uploadBtn").style.display = "none";
+  document.getElementById("retakeBtn").style.display = "none";
+  
+  // Mở lại camera giữ nguyên chế độ đã chọn trước đó
+  initCamera(); 
+}
+
+async function upload(){
+  if(!imgData) return alert("Chưa có ảnh, hãy chụp lại!");
+
+  setStatus("🔄 Đang tải ảnh lên Drive... Vui lòng đợi đến khi báo thành công!");
+  
+  const uploadBtn = document.getElementById("uploadBtn");
+  uploadBtn.disabled = true;
+  uploadBtn.style.opacity = "0.5";
+
+  try {
+    const blob = await (await fetch(imgData)).blob();
+    const reader = new FileReader();
+    
+    reader.onloadend = async function () {
+        const base64data = reader.result;
+        try {
+            const res = await fetch(SCRIPT_URL, {
+              method: "POST",
+              mode: "cors", 
+              body: JSON.stringify({
+                image: base64data,
+                filename: "checkin.jpg"
+              })
+            });
+
+            const data = await res.json();
+
+            if(data.success){
+              uploadedLink = data.url;
+              document.getElementById("link").innerHTML =
+                `✅ <a href="${uploadedLink}" target="_blank">Xem ảnh vừa lưu trên Drive</a>`;
+              document.getElementById("formBtn").style.display = "flex";
+              document.getElementById("uploadBtn").style.display = "none";
+              document.getElementById("retakeBtn").style.display = "none";
+              setStatus("🎉 Upload Drive thành công!");
+              updateStep(2);
+            } else {
+              throw new Error("Tải lên lỗi từ server!");
+            }
+        } catch (e) {
+            console.error(e);
+            setStatus("🔴 Lỗi server khi upload. Thử chụp và upload lại!");
+            uploadBtn.disabled = false;
+            uploadBtn.style.opacity = "1";
+        }
+    };
+    reader.readAsDataURL(blob);
+
+  } catch (e) {
+    console.error(e);
+    setStatus("🔴 Lỗi kết nối mạng. Vui lòng thử lại.");
+    document.getElementById("uploadBtn").disabled = false;
+    document.getElementById("uploadBtn").style.opacity = "1";
+  }
+}
+
+function goForm(){
+  if(!uploadedLink) return;
+  const url = FORM_URL + "?" + ENTRY_ID + "=" + encodeURIComponent(uploadedLink);
+  window.open(url, "_blank");
+  updateStep(3);
+}
+</script>
+
+</body>
+</html>
