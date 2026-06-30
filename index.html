@@ -260,8 +260,8 @@
 
   <div class="alert-box">
     <strong>Bước 1:</strong> Bấm "Bắt đầu ca" → Chọn kiểu cam (Sau/Trước).
-    <br><strong>Bước 2:</strong> Chụp ảnh & Upload lên Drive. 
-    <br><strong>Bước 3:</strong> Điền Form báo cáo.
+    <br><strong>Bước 2:</strong> Chụp ảnh & Tải lên Drive. 
+    <br><strong>Bước 3:</strong> Tự động chuyển qua điền Google Form.
   </div>
 
   <div class="camera-container">
@@ -299,7 +299,7 @@ const ENTRY_ID = "entry.1519431587";
 let stream;
 let imgData;
 let uploadedLink;
-let selectedFacingMode = "environment"; // Mặc định mở camera sau
+let selectedFacingMode = "environment"; 
 
 function setStatus(t){ 
   document.getElementById("status").innerText = t; 
@@ -312,7 +312,6 @@ function updateStep(stepIndex) {
   });
 }
 
-// Mở trực tiếp luồng camera dựa trên FacingMode (Trước/Sau) cực kỳ ổn định trên mobile
 async function initCamera() {
   try {
     setStatus("Đang bật camera, vui lòng đợi...");
@@ -332,7 +331,6 @@ async function initCamera() {
     try {
       stream = await navigator.mediaDevices.getUserMedia(constraints);
     } catch (e) {
-      // Fallback nếu trình duyệt không hỗ trợ exact facingMode
       console.warn("Exact facing mode failed, falling back to basic constraints", e);
       stream = await navigator.mediaDevices.getUserMedia({ 
         video: { facingMode: selectedFacingMode } 
@@ -362,7 +360,6 @@ async function initCamera() {
   }
 }
 
-// Khi người dùng đổi lựa chọn Camera Trước / Camera Sau trên menu xổ xuống
 async function switchCameraMode() {
   await initCamera();
 }
@@ -404,14 +401,13 @@ function retakeCam() {
   document.getElementById("uploadBtn").style.display = "none";
   document.getElementById("retakeBtn").style.display = "none";
   
-  // Mở lại camera giữ nguyên chế độ đã chọn trước đó
   initCamera(); 
 }
 
 async function upload(){
   if(!imgData) return alert("Chưa có ảnh, hãy chụp lại!");
 
-  setStatus("🔄 Đang tải ảnh lên Drive... Vui lòng đợi đến khi báo thành công!");
+  setStatus("🔄 Đang tải ảnh lên Drive... Vui lòng đợi trong giây lát!");
   
   const uploadBtn = document.getElementById("uploadBtn");
   uploadBtn.disabled = true;
@@ -439,11 +435,15 @@ async function upload(){
               uploadedLink = data.url;
               document.getElementById("link").innerHTML =
                 `✅ <a href="${uploadedLink}" target="_blank">Xem ảnh vừa lưu trên Drive</a>`;
-              document.getElementById("formBtn").style.display = "flex";
-              document.getElementById("uploadBtn").style.display = "none";
-              document.getElementById("retakeBtn").style.display = "none";
-              setStatus("🎉 Upload Drive thành công!");
+              
+              setStatus("🎉 Upload Drive thành công! Đang chuyển sang Google Form...");
               updateStep(2);
+
+              // TỰ ĐỘNG CHUYỂN SANG GOOGLE FORM SAU 1.5 GIÂY
+              setTimeout(() => {
+                goForm();
+              }, 1500);
+
             } else {
               throw new Error("Tải lên lỗi từ server!");
             }
