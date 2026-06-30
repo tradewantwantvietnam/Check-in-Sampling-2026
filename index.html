@@ -1,0 +1,532 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2299.4">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;html lang="vi"&gt;&lt;head&gt;</p>
+<p class="p1">&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"&gt;</p>
+<p class="p1">&lt;title&gt;Check in - Chụp ảnh Sampling 2026&lt;/title&gt;</p>
+<p class="p1">&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>* { box-sizing: border-box; margin: 0; padding: 0; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>body {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-family: 'Segoe UI', Arial, sans-serif;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: #f0f4f8;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>min-height: 100vh;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>flex-direction: column;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>justify-content: flex-start;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding: 24px 16px 40px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.card {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: #fff;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-radius: 16px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>box-shadow: 0 2px 16px rgba(0,0,0,0.10);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>max-width: 440px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding: 28px 24px 32px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.logo-row {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>gap: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin-bottom: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.logo-icon {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>width: 40px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>height: 40px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: #d32f2f;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-radius: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>justify-content: center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>flex-shrink: 0;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.logo-icon svg { display: block; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.title {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: 17px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-weight: 700;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: #1a1a2e;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>line-height: 1.3;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.subtitle {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: #888;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin-top: 2px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.divider {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border: none;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-top: 1px solid #eee;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin: 4px 0 20px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.instruction {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: #fff8e1;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-left: 4px solid #f9a825;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-radius: 6px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding: 10px 14px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: 13px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: #5d4037;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin-bottom: 22px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>line-height: 1.5;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.instruction b { color: #e65100; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* Camera area */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.camera-area {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-radius: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>overflow: hidden;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: #111;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>aspect-ratio: 4/3;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>position: relative;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin-bottom: 16px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>justify-content: center;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>#videoEl {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>height: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>object-fit: cover;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display: block;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>#previewImg {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>height: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>object-fit: cover;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display: none;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-radius: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.camera-placeholder {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>flex-direction: column;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>gap: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: #aaa;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: 14px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.camera-placeholder svg { opacity: 0.5; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* Buttons */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.btn {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding: 14px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border: none;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-radius: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: 15px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-weight: 600;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>transition: all 0.18s;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>justify-content: center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>gap: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin-bottom: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>letter-spacing: 0.01em;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.btn:active { transform: scale(0.97); }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.btn-camera {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: #1565c0;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: #fff;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.btn-camera:hover:not(:disabled) { background: #0d47a1; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.btn-retake {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: #f5f5f5;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: #444;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border: 1px solid #ddd;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.btn-upload {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: #2e7d32;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: #fff;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.btn-upload:hover:not(:disabled) { background: #1b5e20; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.btn-form {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: #d32f2f;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: #fff;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: 16px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding: 16px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin-top: 4px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.btn-form:hover:not(:disabled) { background: #b71c1c; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* Steps */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.steps {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>justify-content: center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>gap: 0;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin-bottom: 22px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.step {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>flex-direction: column;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>gap: 4px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>flex: 1;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.step-dot {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>width: 28px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>height: 28px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-radius: 50%;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: #e0e0e0;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: #999;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-weight: 700;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>justify-content: center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>transition: all 0.3s;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.step-dot.active { background: #1565c0; color: #fff; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.step-dot.done { background: #2e7d32; color: #fff; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.step-label {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: #999;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>line-height: 1.2;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.step-line {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>flex: 0 0 24px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>height: 2px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: #e0e0e0;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin-bottom: 16px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>transition: background 0.3s;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.step-line.done { background: #2e7d32; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* Status */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.status {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: 13px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: #555;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin: 10px 0 4px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>min-height: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.status.success { color: #2e7d32; font-weight: 600; }</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.status.error { color: #c62828; font-weight: 600; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* Link result */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.link-box {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>background: #e8f5e9;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border: 1px solid #a5d6a7;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-radius: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>padding: 10px 14px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>font-size: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>color: #1b5e20;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>word-break: break-all;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>margin: 8px 0 14px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>display: none;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>.link-box a { color: #1565c0; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>/* Spinner */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>.spinner {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>width: 18px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>height: 18px;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border: 2px solid rgba(255,255,255,0.4);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-top-color: #fff;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>border-radius: 50%;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>animation: spin 0.7s linear infinite;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>flex-shrink: 0;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>@keyframes spin { to { transform: rotate(360deg); } }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>canvas { display: none; }</p>
+<p class="p1">&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;div class="card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="logo-row"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="logo-icon"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;svg width="22" height="22" viewBox="0 0 24 24" fill="none"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;circle cx="12" cy="12" r="4" fill="white"&gt;&lt;/circle&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm-8 13a5 5 0 110-10 5 5 0 010 10zm5-11a1 1 0 110-2 1 1 0 010 2z" fill="white"&gt;&lt;/path&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/svg&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="title"&gt;Check in Sampling 2026&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="subtitle"&gt;Chụp ảnh khi không tải được từ điện thoại&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;hr class="divider"&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="steps"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="step"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="step-dot active" id="dot1"&gt;1&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="step-label"&gt;Chụp&lt;br&gt;ảnh&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="step-line" id="line1"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="step"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="step-dot" id="dot2"&gt;2&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="step-label"&gt;Upload&lt;br&gt;Drive&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="step-line" id="line2"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="step"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="step-dot" id="dot3"&gt;3&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;div class="step-label"&gt;Điền&lt;br&gt;Form&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="instruction"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>Dùng trang này khi &lt;b&gt;không tải được ảnh&lt;/b&gt; từ điện thoại lên Google Form.&lt;br&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>Chụp ảnh → Upload → Hệ thống tự điền link vào form cho bạn.</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="camera-area" id="cameraArea"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="camera-placeholder" id="placeholder"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;svg width="48" height="48" viewBox="0 0 24 24" fill="#aaa"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm-8 13a5 5 0 110-10 5 5 0 010 10zm5-11a1 1 0 110-2 1 1 0 010 2z"&gt;&lt;/path&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;/svg&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;span&gt;Nhấn nút bên dưới&lt;br&gt;để mở camera&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;video id="videoEl" autoplay="" playsinline="" style="display:none"&gt;&lt;/video&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;img id="previewImg" alt="Ảnh vừa chụp"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;canvas id="canvasEl"&gt;&lt;/canvas&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div id="step1Btns"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="btn btn-camera" id="btnOpenCamera" onclick="openCamera()"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;svg width="18" height="18" viewBox="0 0 24 24" fill="white"&gt;&lt;path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm-8 13a5 5 0 110-10 5 5 0 010 10z"&gt;&lt;/path&gt;&lt;/svg&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>Mở Camera</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="btn btn-camera" id="btnCapture" onclick="capturePhoto()" style="display:none; background:#e65100;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;svg width="18" height="18" viewBox="0 0 24 24" fill="white"&gt;&lt;circle cx="12" cy="12" r="8"&gt;&lt;/circle&gt;&lt;/svg&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>Chụp ảnh</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div id="step2Btns" style="display:none"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="btn btn-retake" onclick="retakePhoto()"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;svg width="16" height="16" viewBox="0 0 24 24" fill="#555"&gt;&lt;path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"&gt;&lt;/path&gt;&lt;/svg&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>Chụp lại</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button class="btn btn-upload" id="btnUpload" onclick="uploadPhoto()"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>&lt;svg width="18" height="18" viewBox="0 0 24 24" fill="white"&gt;&lt;path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"&gt;&lt;/path&gt;&lt;/svg&gt;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>Upload lên Drive</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="status" id="statusMsg"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div class="link-box" id="linkBox"&gt;&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;button class="btn btn-form" id="btnForm" onclick="goToForm()" style="display:none"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;svg width="18" height="18" viewBox="0 0 24 24" fill="white"&gt;&lt;path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm-1 7V3.5L18.5 9H13z"&gt;&lt;/path&gt;&lt;/svg&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>Tiếp tục điền Google Form →</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/button&gt;</p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>// Đã cập nhật chính xác Link Web App Apps Script bạn gửi</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyQ7Pb1Oyvct9bENwOuCyna5qnzaZCavVfFvLNOndYH_I0za4oPqd833mUomsKFBGQy9w/exec';</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const FORM_URL <span class="Apple-converted-space">  </span>= 'https://forms.gle/Gyu1uUKSNNDMmSzi7';</p>
+<p class="p1"><span class="Apple-converted-space">  </span>const ENTRY_ID <span class="Apple-converted-space">  </span>= 'https://docs.google.com/forms/d/e/1FAIpQLSchaY-0UJIstKxnNRIDgE-bx7VAiDP1DLWn2TItWad7qzOP8A/viewform?usp=pp_url&amp;entry.1519431587=LINK_ANH_TEST';</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>let stream = null;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>let capturedDataUrl = null;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>let uploadedLink = null;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>function setStatus(msg, type='') {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const el = document.getElementById('statusMsg');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>el.textContent = msg;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>el.className = 'status ' + type;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>function updateSteps(active) {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>[1,2,3].forEach(i =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const dot = document.getElementById('dot'+i);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>dot.className = 'step-dot' + (i &lt; active ? ' done' : i === active ? ' active' : '');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p1"><span class="Apple-converted-space">    </span>[1,2].forEach(i =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const line = document.getElementById('line'+i);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>line.className = 'step-line' + (i &lt; active ? ' done' : '');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>async function openCamera() {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>try {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>stream = await navigator.mediaDevices.getUserMedia({</p>
+<p class="p1"><span class="Apple-converted-space">        </span>video: { facingMode: 'environment', width: { ideal: 1920 }, height: { ideal: 1080 } },</p>
+<p class="p1"><span class="Apple-converted-space">        </span>audio: false</p>
+<p class="p1"><span class="Apple-converted-space">      </span>});</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const video = document.getElementById('videoEl');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>video.srcObject = stream;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>video.style.display = 'block';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>document.getElementById('placeholder').style.display = 'none';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>document.getElementById('btnOpenCamera').style.display = 'none';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>document.getElementById('btnCapture').style.display = 'flex';</p>
+<p class="p1"><span class="Apple-converted-space">      </span>setStatus('Camera đang hoạt động — nhấn Chụp ảnh khi sẵn sàng');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>} catch(err) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>setStatus('Không mở được camera: ' + err.message, 'error');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>function capturePhoto() {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const video = document.getElementById('videoEl');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const canvas = document.getElementById('canvasEl');</p>
+<p class="p2"><span class="Apple-converted-space">    </span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// Tối ưu hóa: Thiết lập kích thước nén tối đa là 1280px (Vẫn cực kỳ rõ nét)</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const MAX_WIDTH = 1280;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const MAX_HEIGHT = 1280;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>let width = video.videoWidth || 1280;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>let height = video.videoHeight || 720;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (width &gt; height) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (width &gt; MAX_WIDTH) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>height *= MAX_WIDTH / width;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>width = MAX_WIDTH;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (height &gt; MAX_HEIGHT) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>width *= MAX_HEIGHT / height;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>height = MAX_HEIGHT;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>canvas.width<span class="Apple-converted-space">  </span>= width;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>canvas.height = height;</p>
+<p class="p2"><span class="Apple-converted-space">    </span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>const ctx = canvas.getContext('2d');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>ctx.drawImage(video, 0, 0, width, height);</p>
+<p class="p2"><span class="Apple-converted-space">    </span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// Nén chất lượng ảnh xuống 80% (0.8) để giảm dung lượng file xuống còn ~200KB thay vì vài MB</p>
+<p class="p1"><span class="Apple-converted-space">    </span>capturedDataUrl = canvas.toDataURL('image/jpeg', 0.8);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// Dừng camera để tiết kiệm pin/RAM điện thoại</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (stream) stream.getTracks().forEach(t =&gt; t.stop());</p>
+<p class="p1"><span class="Apple-converted-space">    </span>video.style.display = 'none';</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// Hiển thị ảnh xem trước</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const img = document.getElementById('previewImg');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>img.src = capturedDataUrl;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>img.style.display = 'block';</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('step1Btns').style.display = 'none';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('step2Btns').style.display = 'block';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>updateSteps(2);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>setStatus('Ảnh đã chụp &amp; tối ưu dung lượng. Kiểm tra rồi nhấn Upload.');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>function retakePhoto() {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>capturedDataUrl = null;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('previewImg').style.display = 'none';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('previewImg').src = '';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('placeholder').style.display = 'flex';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('step2Btns').style.display = 'none';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('step1Btns').style.display = 'block';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('btnOpenCamera').style.display = 'flex';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('btnCapture').style.display = 'none';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('btnForm').style.display = 'none';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('linkBox').style.display = 'none';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>uploadedLink = null;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>updateSteps(1);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>setStatus('');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>openCamera();</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>async function uploadPhoto() {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (!capturedDataUrl) return;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const btn = document.getElementById('btnUpload');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>btn.disabled = true;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>btn.innerHTML = '&lt;div class="spinner"&gt;&lt;/div&gt; Đang upload...';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>setStatus('Đang tải ảnh lên Google Drive...');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>try {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>// Đặt tên file theo định dạng thời gian thực tế</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const dateStr = new Date().toISOString().replace(/[:.]/g,'-');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const filename = 'checkin_' + dateStr + '.jpg';</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>// Gọi API bằng Fetch kết hợp CORS mượt mà, không sợ lỗi Redirect của iOS</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const response = await fetch(SCRIPT_URL, {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>method: 'POST',</p>
+<p class="p1"><span class="Apple-converted-space">        </span>mode: 'cors',</p>
+<p class="p1"><span class="Apple-converted-space">        </span>headers: {</p>
+<p class="p1"><span class="Apple-converted-space">          </span>'Content-Type': 'text/plain;charset=utf-8',<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>},</p>
+<p class="p1"><span class="Apple-converted-space">        </span>body: JSON.stringify({<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">          </span>image: capturedDataUrl,<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">          </span>filename: filename<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>})</p>
+<p class="p1"><span class="Apple-converted-space">      </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (!response.ok) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>throw new Error('Mạng không ổn định hoặc lỗi kết nối Gateway.');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>const result = await response.json();</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>if (result.success) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>uploadedLink = result.url;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>setStatus('✓ Upload thành công!', 'success');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const box = document.getElementById('linkBox');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>box.innerHTML = '🔗 &lt;a href="' + uploadedLink + '" target="_blank"&gt;Xem ảnh trên Drive&lt;/a&gt;';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>box.style.display = 'block';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('step2Btns').style.display = 'none';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('btnForm').style.display = 'flex';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>updateSteps(3);</p>
+<p class="p1"><span class="Apple-converted-space">      </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>throw new Error(result.error || 'Upload thất bại từ phía hệ thống Google.');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>} catch(err) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>setStatus('Lỗi: ' + err.message + ' (Hãy kiểm tra lại Apps Script đã cập nhật đúng bản triển khai mới chưa?)', 'error');</p>
+<p class="p1"><span class="Apple-converted-space">      </span>btn.disabled = false;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>btn.innerHTML = '&lt;svg width="18" height="18" viewBox="0 0 24 24" fill="white"&gt;&lt;path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/&gt;&lt;/svg&gt; Thử lại';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>function goToForm() {</p>
+<p class="p1"><span class="Apple-converted-space">    </span>if (!uploadedLink) return;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const url = FORM_URL + '?' + ENTRY_ID + '=' + encodeURIComponent(uploadedLink);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>window.open(url, '_blank');</p>
+<p class="p1"><span class="Apple-converted-space">  </span>}</p>
+<p class="p1">&lt;/script&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;/body&gt;&lt;/html&gt;</p>
+</body>
+</html>
