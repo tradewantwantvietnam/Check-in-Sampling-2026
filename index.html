@@ -435,6 +435,7 @@ async function upload(){
 
             if(data.success){
               uploadedLink = data.url;
+               copyToClipboard(uploadedLink);
               document.getElementById("link").innerHTML =
                 `✅ <a href="${uploadedLink}" target="_blank">Xem ảnh vừa lưu trên Drive</a>`;
               
@@ -465,7 +466,36 @@ async function upload(){
     document.getElementById("uploadBtn").style.opacity = "1";
   }
 }
+async function copyToClipboard(text) {
+  try {
+    // Cách 1 (chuẩn nhất)
+    if (navigator.clipboard && window.isSecureContext) {
+      await navigator.clipboard.writeText(text);
+      setStatus("📋 Đã copy link ảnh!");
+      return;
+    }
 
+    // Cách 2 fallback (bắt buộc để tăng tỷ lệ thành công)
+    const textArea = document.createElement("textarea");
+    textArea.value = text;
+
+    textArea.style.position = "fixed";
+    textArea.style.left = "-9999px";
+
+    document.body.appendChild(textArea);
+    textArea.select();
+
+    document.execCommand("copy");
+
+    document.body.removeChild(textArea);
+
+    setStatus("📋 Đã copy link ảnh (fallback)");
+
+  } catch (err) {
+    console.error(err);
+    setStatus("⚠️ Không thể tự copy, vui lòng bấm link");
+  }
+}
 function goForm(){
   if(!uploadedLink) return;
   const url = FORM_URL + "?" + ENTRY_ID + "=" + encodeURIComponent(uploadedLink);
