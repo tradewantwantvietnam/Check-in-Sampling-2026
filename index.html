@@ -293,7 +293,7 @@
 
 <script>
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzu_w6vDyxbSCVE5ryj7lCeatoj8ZQHycSVVSHLiesgdgXjmVzBBwjzxUw5jaFD-d-0/exec";
-const FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSchaY-0UJIstKxnNRIDgE-bx7VAiDP1DLWn2TItWad7qzOP8A/viewform?usp=dialog";
+const FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSchaY-0UJIstKxnNRIDgE-bx7VAiDP1DLWn2TItWad7qzOP8A/viewform?usp=pp_url";
 const ENTRY_ID = "entry.1519431587";
 
 let stream;
@@ -498,9 +498,12 @@ async function copyToClipboard(text) {
 }
 function goForm(){
   if(!uploadedLink) return;
-  const url = FORM_URL + "?" + ENTRY_ID + "=" + encodeURIComponent(uploadedLink);
-  window.open(url, "_blank");
-  updateStep(3);
+
+  const url = FORM_URL + "&" + ENTRY_ID + "=" + encodeURIComponent(uploadedLink);
+
+  console.log(url);
+
+  location.href = url;
 }
 </script>
 
