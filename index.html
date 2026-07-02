@@ -285,6 +285,13 @@
 
   <div id="status"></div>
   <div id="link"></div>
+ <button
+  class="btn-form"
+  id="skipBtn"
+  style="display:none;background:#ff9800;"
+  onclick="goFormWithoutImage()">
+  📝 Tiếp tục điền Form (không có link ảnh)
+</button>
 
   <button class="btn-form" id="formBtn" style="display:none" onclick="goForm()">
     📝 Điền Google Form
@@ -299,8 +306,11 @@ const ENTRY_ID = "entry.1519431587";
 let stream;
 let imgData;
 let uploadedLink;
-let selectedFacingMode = "environment"; 
-
+let selectedFacingMode = "environment";
+let uploadFinished = false;
+let uploadTimeout = null;
+let uploadController = null;
+ 
 function setStatus(t){ 
   document.getElementById("status").innerText = t; 
 }
@@ -394,6 +404,16 @@ function capture(){
 }
 
 function retakeCam() {
+ clearTimeout(uploadTimeout);
+
+if(uploadController){
+    try{
+        uploadController.abort();
+    }catch(e){}
+    uploadController = null;
+}
+
+uploadFinished = false;
   imgData = null;
   document.getElementById("preview").style.display = "none";
   document.getElementById("link").innerHTML = "";
@@ -408,6 +428,21 @@ async function upload(){
   if(!imgData) return alert("Chưa có ảnh, hãy chụp lại!");
 
   setStatus("🔄 Đang tải ảnh lên Drive... Vui lòng đợi trong giây lát!");
+ uploadFinished = false;
+
+document.getElementById("skipBtn").style.display = "none";
+
+uploadTimeout = setTimeout(() => {
+
+    if(uploadFinished) return;
+
+    setStatus(
+        "⏳ Ảnh đang upload hơn 5 phút.\nBạn có thể tiếp tục chờ hoặc chuyển sang Google Form."
+    );
+
+    document.getElementById("skipBtn").style.display = "flex";
+
+},5*60*1000);
   
   const uploadBtn = document.getElementById("uploadBtn");
   uploadBtn.disabled = true;
@@ -419,21 +454,37 @@ async function upload(){
     
     reader.onloadend = async function () {
         const base64data = reader.result;
+        let abortTimeout;
         try {
-            const res = await fetch(SCRIPT_URL, {
+            uploadController = new AbortController();
+
+abortTimeout = setTimeout(() => {
+    if(uploadController){
+        uploadController.abort();
+    }
+}, 5 * 60 * 1000);
+
+const res = await fetch(SCRIPT_URL, {
   method: "POST",
   headers: {
-    "Content-Type": "text/plain;charset=utf-8"
+    "Content-Type":"text/plain;charset=utf-8"
   },
   body: JSON.stringify({
     image: base64data,
-    filename: "checkin.jpg"
-  })
+    filename:"checkin.jpg"
+  }),
+  signal: uploadController.signal
 });
+
+clearTimeout(abortTimeout);
 
             const data = await res.json();
 
             if(data.success){
+             uploadFinished = true;
+    clearTimeout(uploadTimeout);
+    uploadController = null;
+    document.getElementById("skipBtn").style.display = "none";
               uploadedLink = data.url;
                copyToClipboard(uploadedLink);
               document.getElementById("link").innerHTML =
@@ -451,11 +502,26 @@ async function upload(){
               throw new Error("Tải lên lỗi từ server!");
             }
         } catch (e) {
-            console.error(e);
-            setStatus("🔴 Lỗi server khi upload. Thử chụp và upload lại!");
-            uploadBtn.disabled = false;
-            uploadBtn.style.opacity = "1";
-        }
+    clearTimeout(uploadTimeout);
+   
+    
+uploadFinished = false;
+uploadController = null;
+
+    console.error(e);
+
+    if(e.name==="AbortError"){
+    setStatus("⏳ Upload quá 5 phút nên đã dừng. Bạn có thể tiếp tục Google Form.");
+}else{
+    setStatus("🔴 Lỗi kết nối mạng.");
+}
+
+    document.getElementById("uploadBtn").disabled = false;
+    document.getElementById("uploadBtn").style.opacity = "1";
+
+    document.getElementById("skipBtn").style.display = "flex";
+
+}
     };
     reader.readAsDataURL(blob);
 
@@ -504,6 +570,26 @@ function goForm(){
   console.log(url);
 
   location.href = url;
+}
+ function goFormWithoutImage(){
+
+    if(confirm(
+        "Ảnh đang upload quá lâu hoặc gặp lỗi.\n\n" +
+        "Bạn sẽ chuyển sang Google Form mà KHÔNG có link ảnh.\n\n" +
+        "Sau đó hãy chụp ảnh trực tiếp trong Form."
+    )){
+
+        if(uploadController){
+    try{
+        uploadController.abort();
+    }catch(e){}
+    uploadController = null;
+}
+
+location.href = FORM_URL;
+
+    }
+
 }
 </script>
 
